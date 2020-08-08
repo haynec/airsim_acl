@@ -58,7 +58,14 @@ for x in range(1, step):
         finished = task.is_done()
         if current_time - start_time > 500*1000000:
             print(position)
-            client.simPlotArrows()
+            client.simPlotArrows(
+                points_start=[position],
+                points_end=[position+(velocity/6)],
+                color_rgba=[0.0, 0.0, 1.0, 0.0], duration=500.0, arrow_size=100, thickness=5, is_persistent=True)
+            client.simPlotArrows(
+                points_start=[position],
+                points_end=[position + (acceleration/6)],
+                color_rgba=[0.0, 1.0, 0.0, 0.0], duration=500.0, arrow_size=100, thickness=5, is_persistent=True)
             start_time = current_time
 
 #return to original state
